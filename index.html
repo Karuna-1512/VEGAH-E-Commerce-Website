@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>VEGAH – Premium Shoes</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+   <link rel="icon" href="https://cdn-icons-png.flaticon.com/512/2589/2589903.png" type="image/png">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <header class="navbar">
+    <div class="logo">VEGAH</div>
+    <nav id="navMenu">
+      <a href="index.html">Home</a>
+      <a href="#products">Products</a>
+      <a href="categories.html">Categories</a>
+      <a href="about.html">About</a>
+    </nav>
+    <div style="display:flex; align-items:center; gap:20px;">
+      <a href="cart.html" class="cart" aria-label="View shopping cart">🛒 <span id="cart-count">0</span></a>
+      <div id="authLink"></div>
+      <div class="menu-btn" onclick="document.getElementById('navMenu').classList.toggle('active')">☰</div>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section class="hero">
+    <h1>Walk Bold.<br>Walk VEGAH.</h1>
+    <p>Premium shoes crafted for comfort, performance, and timeless style.</p>
+    <a href="#products" class="btn primary">Shop Now</a>
+    <a href="#products" class="btn secondary">Explore Collection</a>
+  </section>
+
+  <!-- PRODUCTS -->
+  <section id="products" class="products">
+    <h2>Featured Premium Collection</h2>
+    <div class="product-grid">
+      <!-- Running Shoes -->
+      <a href="product.html?id=1" class="product-card">
+        <img src="https://m.media-amazon.com/images/I/51tIAwxh+3L._AC_UY900_.jpg" alt="VEGAH Shadow Runner">
+        <h3>Shadow Runner</h3>
+        <p>₹8,999</p>
+      </a>
+      <a href="product.html?id=2" class="product-card">
+        <img src="https://img.runningwarehouse.com/watermark/rs.php?path=S4ESM00-1.jpg&nw=455" alt="VEGAH Phantom Speed">
+        <h3>Phantom Speed</h3>
+        <p>₹7,499</p>
+      </a>
+
+      <!-- Casual Sneakers -->
+      <a href="product.html?id=3" class="product-card">
+        <img src="https://m.media-amazon.com/images/I/71dBbBndCzL._AC_UY900_.jpg" alt="VEGAH Midnight Casual">
+        <h3>Midnight Casual</h3>
+        <p>₹5,999</p>
+      </a>
+      <a href="product.html?id=4" class="product-card">
+        <img src="https://thursdayboots.com/cdn/shop/files/2800x1080-Men-Premier-HighTop-BlackMatte-022823-1_800x533_crop_right.jpg?v=1679949484" alt="VEGAH Premier High Top">
+        <h3>Premier High Top</h3>
+        <p>₹6,799</p>
+      </a>
+
+      <!-- Formal -->
+      <a href="product.html?id=5" class="product-card">
+        <img src="https://m.media-amazon.com/images/I/61skHZMU5ZL._AC_UY900_.jpg" alt="VEGAH Executive Oxford">
+        <h3>Executive Oxford</h3>
+        <p>₹10,999</p>
+      </a>
+      <a href="product.html?id=6" class="product-card">
+        <img src="https://m.media-amazon.com/images/I/61Y6m5DbxUL._AC_UY900_.jpg" alt="VEGAH Classic Cap-Toe">
+        <h3>Classic Cap-Toe</h3>
+        <p>₹9,499</p>
+      </a>
+
+      <!-- Luxury -->
+      <a href="product.html?id=7" class="product-card">
+        <img src="https://image-cdn.hypb.st/https%3A%2F%2Fhypebeast.com%2Fimage%2F2017%2F07%2Fair-jordan-1-retro-high-premium-essentials-pack-1.jpg?q=75&w=800&cbr=1&fit=max" alt="VEGAH Noir Legacy">
+        <h3>Noir Legacy</h3>
+        <p>₹12,999</p>
+      </a>
+      <a href="product.html?id=8" class="product-card">
+        <img src="https://www.apetogentleman.com/wp-content/uploads/2024/05/BestDesignerSneakerModels16.jpg" alt="VEGAH Eclipse Elite">
+        <h3>Eclipse Elite</h3>
+        <p>₹15,999</p>
+      </a>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <p>© 2025 VEGAH. All rights reserved.</p>
+  </footer>
+
+  <script src="script.js" defer></script>
+  <script>
+    // Update login/logout link
+    document.addEventListener("DOMContentLoaded", () => {
+      const authLink = document.getElementById("authLink");
+      const loggedIn = localStorage.getItem("loggedIn") === "true";
+      const user = JSON.parse(localStorage.getItem("vegahUser"));
+
+      if (loggedIn && user) {
+        authLink.innerHTML = `<span>Welcome, ${user.name.split(" ")[0]}!</span> <a href="#" onclick="logout()">Logout</a>`;
+      } else {
+        authLink.innerHTML = `<a href="login.html">Login</a>`;
+      }
+    });
+
+    function logout() {
+      localStorage.removeItem("loggedIn");
+      localStorage.removeItem("vegahUser");
+      location.reload();
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Categories | VEGAH</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+   <link rel="icon" href="https://cdn-icons-png.flaticon.com/512/2589/2589903.png" type="image/png">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="navbar">
+    <div class="logo">VEGAH</div>
+    <nav id="navMenu">
+      <a href="index.html">Home</a>
+      <a href="index.html#products">Products</a>
+      <a href="categories.html">Categories</a>
+      <a href="about.html">About</a>
+    </nav>
+    <div style="display:flex; align-items:center; gap:20px;">
+      <a href="cart.html" class="cart">🛒 <span id="cart-count">0</span></a>
+      <div id="authLink"></div>
+      <div class="menu-btn" onclick="document.getElementById('navMenu').classList.toggle('active')">☰</div>
+    </div>
+  </header>
+
+  <section class="products" style="padding-top:120px;">
+    <h2 style="font-size:36px; text-align:center; margin-bottom:50px;">Shop by Category</h2>
+    <div class="product-grid">
+      <a href="index.html#products" class="product-card" style="height:400px; display:flex; flex-direction:column; justify-content:center; font-size:24px; background:#000; color:white;">
+        <strong>Running</strong><p>Performance & Speed</p>
+      </a>
+      <a href="index.html#products" class="product-card" style="height:400px; display:flex; flex-direction:column; justify-content:center; font-size:24px; background:#111; color:white;">
+        <strong>Casual</strong><p>Everyday Style</p>
+      </a>
+      <a href="index.html#products" class="product-card" style="height:400px; display:flex; flex-direction:column; justify-content:center; font-size:24px; background:#222; color:white;">
+        <strong>Formal</strong><p>Elegance Redefined</p>
+      </a>
+      <a href="index.html#products" class="product-card" style="height:400px; display:flex; flex-direction:column; justify-content:center; font-size:24px; background:#333; color:white;">
+        <strong>Luxury</strong><p>Exclusive Collection</p>
+      </a>
+    </div>
+  </section>
+
+  <script src="script.js" defer></script>
+  <script>
+    // Same auth script as index.html
+    document.addEventListener("DOMContentLoaded", () => {
+      const authLink = document.getElementById("authLink");
+      const loggedIn = localStorage.getItem("loggedIn") === "true";
+      const user = JSON.parse(localStorage.getItem("vegahUser"));
+      if (loggedIn && user) {
+        authLink.innerHTML = `<span>Welcome, ${user.name.split(" ")[0]}!</span> <a href="#" onclick="logout()">Logout</a>`;
+      } else {
+        authLink.innerHTML = `<a href="login.html">Login</a>`;
+      }
+    });
+    function logout() {
+      localStorage.removeItem("loggedIn");
+      localStorage.removeItem("vegahUser");
+      location.reload();
+    }
+  </script>
+</body>
+</html>

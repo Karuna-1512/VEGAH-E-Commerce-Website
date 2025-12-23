@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>About | VEGAH</title>
+
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    body {
+      background: #f7f7f7;
+      color: #111;
+    }
+
+    /* NAVBAR */
+    .navbar {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 18px 5%;
+      background: #fff;
+      border-bottom: 1px solid #eee;
+    }
+
+    .logo {
+      font-size: 26px;
+      font-weight: 800;
+      letter-spacing: 2px;
+    }
+
+    nav {
+      display: flex;
+      gap: 26px;
+    }
+
+    nav a {
+      text-decoration: none;
+      color: #111;
+      font-weight: 500;
+      font-size: 15px;
+    }
+
+    nav a:hover {
+      opacity: 0.6;
+    }
+
+    .cart {
+      text-decoration: none;
+      color: #111;
+      font-weight: 600;
+    }
+
+    .menu-btn {
+      display: none;
+      font-size: 22px;
+      cursor: pointer;
+    }
+
+    #authLink a {
+      text-decoration: none;
+      font-weight: 600;
+      color: #111;
+      margin-left: 12px;
+    }
+
+    /* HERO */
+    .hero {
+      min-height: 60vh;
+      background: linear-gradient(135deg, #000, #1a1a1a);
+      color: #fff;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 40px 5%;
+    }
+
+    .hero h1 {
+      font-size: 48px;
+      font-weight: 700;
+      margin-bottom: 14px;
+    }
+
+    .hero p {
+      font-size: 20px;
+      max-width: 800px;
+      opacity: 0.85;
+    }
+
+    /* CONTENT */
+    .content {
+      padding: 80px 5%;
+      background: #fff;
+      text-align: center;
+    }
+
+    .content h2 {
+      font-size: 34px;
+      font-weight: 700;
+      margin-bottom: 20px;
+    }
+
+    .content p {
+      max-width: 900px;
+      margin: 0 auto 40px;
+      font-size: 18px;
+      line-height: 1.8;
+      color: #444;
+    }
+
+    /* FOOTER */
+    .footer {
+      padding: 30px 5%;
+      text-align: center;
+      background: #000;
+      color: #fff;
+      font-size: 14px;
+    }
+
+    /* MOBILE */
+    @media (max-width: 768px) {
+      nav {
+        position: absolute;
+        top: 70px;
+        left: 0;
+        width: 100%;
+        background: #fff;
+        flex-direction: column;
+        padding: 20px 5%;
+        display: none;
+      }
+
+      nav.active {
+        display: flex;
+      }
+
+      .menu-btn {
+        display: block;
+      }
+
+      .hero h1 {
+        font-size: 36px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <header class="navbar">
+    <div class="logo">VEGAH</div>
+
+    <nav id="navMenu">
+      <a href="index.html">Home</a>
+      <a href="index.html#products">Products</a>
+      <a href="categories.html">Categories</a>
+      <a href="about.html">About</a>
+    </nav>
+
+    <div style="display:flex;align-items:center;gap:18px;">
+      <a href="cart.html" class="cart">🛒 <span id="cart-count">0</span></a>
+      <div id="authLink"></div>
+      <div class="menu-btn" onclick="toggleMenu()">☰</div>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section class="hero">
+    <h1>About VEGAH</h1>
+    <p>Crafted for those who walk with purpose.</p>
+  </section>
+
+  <!-- CONTENT -->
+  <section class="content">
+    <h2>Our Story</h2>
+    <p>
+      Founded in 2025, VEGAH was born from a simple belief — shoes should empower,
+      not just protect your feet. We blend premium materials, bold design, and
+      timeless black aesthetics to create footwear that moves effortlessly from
+      street to statement.
+      <br><br>
+      Every pair is designed with precision, comfort, and confidence at its core.
+    </p>
+
+    <h2>Our Mission</h2>
+    <p>
+      To redefine premium footwear by making luxury accessible, sustainable,
+      and uncompromising in quality.
+    </p>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    © 2025 VEGAH. All rights reserved.
+  </footer>
+
+  <script>
+    function toggleMenu() {
+      document.getElementById("navMenu").classList.toggle("active");
+    }
+
+    document.addEventListener("DOMContentLoaded", () => {
+      const authLink = document.getElementById("authLink");
+      const loggedIn = localStorage.getItem("loggedIn") === "true";
+      const user = JSON.parse(localStorage.getItem("vegahUser"));
+
+      if (loggedIn && user) {
+        authLink.innerHTML = `
+          <span>Hi, ${user.name.split(" ")[0]}</span>
+          <a href="#" onclick="logout()">Logout</a>
+        `;
+      } else {
+        authLink.innerHTML = `<a href="login.html">Login</a>`;
+      }
+    });
+
+    function logout() {
+      localStorage.removeItem("loggedIn");
+      localStorage.removeItem("vegahUser");
+      location.reload();
+    }
+  </script>
+
+</body>
+</html>
